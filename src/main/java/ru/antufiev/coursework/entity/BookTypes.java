@@ -5,30 +5,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "bookTypes")
 public class BookTypes {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
+  @Column(name = "id", nullable = false, unique = true)
+  private long bookTypeId;
 
-  @Column(name = "name")
+  @Column(name = "name", nullable = false, unique = false)
   private String name;
 
-  @Column(name = "count")
+  @Column(name = "count", nullable = false, unique = false)
   private long count;
 
-  @Column(name = "fine")
-  private String fine;
+  @Column(name = "fine", nullable = false, unique = false)
+  private long fine;
 
-  @Column(name = "dayCount")
+  @Column(name = "dayCount", nullable = false, unique = false)
   private long dayCount;
 
   public BookTypes() {
 
   }
 
-  public BookTypes(String name, long count, String fine, long dayCount) {
+  public BookTypes(String name, long count, long fine, long dayCount) {
     this.name = name;
     this.count = count;
     this.fine = fine;
@@ -51,11 +54,11 @@ public class BookTypes {
     this.count = count;
   }
 
-  public String getFine() {
+  public long getFine() {
     return fine;
   }
 
-  public void setFine(String fine) {
+  public void setFine(long fine) {
     this.fine = fine;
   }
 
@@ -65,5 +68,16 @@ public class BookTypes {
 
   public void setDayCount(long dayCount) {
     this.dayCount = dayCount;
+  }
+
+  @Override
+  public String toString() {
+    return "BookTypes{" +
+            "bookTypeId=" + bookTypeId +
+            ", name='" + name + '\'' +
+            ", count=" + count +
+            ", fine=" + fine +
+            ", dayCount=" + dayCount +
+            '}';
   }
 }

@@ -1,27 +1,37 @@
 package ru.antufiev.coursework.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "books")
 public class Books {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
+  @Column(name = "id", nullable = false, unique = true)
+  private long bookId;
 
-  @Column(name = "name")
+  @Column(name = "name", nullable = false, unique = false)
   private String name;
 
-  @Column(name = "count")
+  @Column(name = "count", nullable = false, unique = false)
   private long count;
 
-  @Column(name = "typeId")
-  private long typeId;
+  @ManyToOne
+  private BookTypes bookTypes;
 
-  public Books() {}
-  public Books(String name, long count, long typeId) {
+  public Books() {
+  }
+
+  public Books(String name, long count, BookTypes bookTypes) {
     this.name = name;
     this.count = count;
-    this.typeId = typeId;
+    this.bookTypes = bookTypes;
   }
 
   public String getName() {
@@ -40,11 +50,21 @@ public class Books {
     this.count = count;
   }
 
-  public long getTypeId() {
-    return typeId;
+  public BookTypes getBookTypes() {
+    return bookTypes;
   }
 
-  public void setTypeId(long typeId) {
-    this.typeId = typeId;
+  public void setBookTypes(BookTypes bookTypes) {
+    this.bookTypes = bookTypes;
+  }
+
+  @Override
+  public String toString() {
+    return "Books{" +
+            "bookId=" + bookId +
+            ", name='" + name + '\'' +
+            ", count=" + count +
+            ", bookTypes=" + bookTypes +
+            '}';
   }
 }
