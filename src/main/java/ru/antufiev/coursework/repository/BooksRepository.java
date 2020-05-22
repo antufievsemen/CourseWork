@@ -1,7 +1,7 @@
 package ru.antufiev.coursework.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import ru.antufiev.coursework.entity.Books;
+import ru.antufiev.coursework.entity.Book;
 
-public interface BooksRepository extends CrudRepository<Books, Long> {
+public interface BooksRepository extends CrudRepository<Book, Long> {
 }
