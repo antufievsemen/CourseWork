@@ -14,7 +14,7 @@ public class Record {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id", nullable = false, unique = true)
-  private long journalId;
+  private long recordId;
 
   @ManyToOne(cascade = CascadeType.ALL)
   private Book book;
@@ -46,12 +46,12 @@ public class Record {
 
 
 
-  public long getJournalId() {
-    return journalId;
+  public long getRecordId() {
+    return recordId;
   }
 
-  public void setJournalId(long journalId) {
-    this.journalId = journalId;
+  public void setRecordId(long journalId) {
+    this.recordId = journalId;
   }
 
   public Book getBook() {
@@ -97,7 +97,7 @@ public class Record {
   @Override
   public String toString() {
     return "Record{" +
-            "journalId=" + journalId +
+            "journalId=" + recordId +
             ", book=" + book +
             ", client=" + client +
             ", dateBegin=" + dateBegin +

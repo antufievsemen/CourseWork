@@ -47,4 +47,30 @@ public class JournalServiceImpl implements JournalService{
     }
     return false;
   }
+
+  @Override
+  public Record deleteRecord(long id) {
+    Optional<Record> record = repository.findById(id);
+    if (record.isPresent()) {
+      repository.deleteById(id);
+      return record.get();
+    }
+    throw new RecordNotFoundException("Record with id = " + id + " doesnt exist");
+  }
+
+  @Override
+  public List<Record> updateRecord(Record record) {
+    Optional<Record> optionalRecord = repository.findById(record.getRecordId());
+    if (optionalRecord.isPresent()) {
+      Record recordUpdate = optionalRecord.get();
+      recordUpdate.setBook(record.getBook());
+      recordUpdate.setClient(record.getClient());
+      recordUpdate.setDateBegin(record.getDateBegin());
+      recordUpdate.setDateEnd(record.getDateEnd());
+      recordUpdate.setDateRet(record.getDateRet());
+      repository.save(recordUpdate);
+      return listRecord();
+    }
+    throw new RecordNotFoundException("Record with id = " + record.getRecordId() + "doesnt exist");
+  }
 }

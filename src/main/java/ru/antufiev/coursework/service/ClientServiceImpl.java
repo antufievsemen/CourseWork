@@ -44,4 +44,30 @@ public class ClientServiceImpl implements ClientService {
   public Client addClient(Client client) {
     return repository.save(client);
   }
+
+  @Override
+  public Client deleteClient(long id) {
+    Optional<Client> optional = repository.findById(id);
+    if (optional.isPresent()) {
+      repository.deleteById(id);
+      return optional.get();
+    }
+    throw new ClientNotFoundException("Client with id = " + id + " doesnt exist");
+  }
+
+  @Override
+  public List<Client> updateClient(Client client) {
+    Optional<Client> optional = repository.findById(client.getClientId());
+    if (optional.isPresent()) {
+      Client clientUpdate = optional.get();
+      clientUpdate.setFirstName(client.getFirstName());
+      clientUpdate.setSecondName(client.getSecondName());
+      clientUpdate.setFatherName(client.getFatherName());
+      clientUpdate.setPassportNum(client.getPassportNum());
+      clientUpdate.setPassportSeria(client.getPassportSeria());
+      repository.save(clientUpdate);
+      return listClient();
+    }
+    return listClient();
+  }
 }

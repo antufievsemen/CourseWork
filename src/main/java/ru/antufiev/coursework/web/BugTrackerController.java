@@ -26,7 +26,7 @@ public class BugTrackerController {
   private JournalService journalService;
   private BookTypeService bookTypeService;
 
-  @GetMapping("/records")
+  @GetMapping("/journal")
   public ResponseEntity<List<Record>> getAllRecords() {
     return new ResponseEntity<>(journalService.listRecord(), HttpStatus.OK);
   }
@@ -60,6 +60,24 @@ public class BugTrackerController {
     return journalService.addRecord(record);
   }
 
+  @DeleteMapping(value = "/deleteRecord/{id}")
+  public Record deleteRecord(@PathVariable("id") long id) {
+    try {
+      return journalService.deleteRecord(id);
+    } catch (RecordNotFoundException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "This record doesnt exist");
+    }
+  }
+
+  @PostMapping(value = "/updateRecord", consumes = "application/json", produces = "application/json")
+  public List<Record> updateRecord(@RequestBody Record record) {
+    try {
+      return updateRecord(record);
+    } catch (RecordNotFoundException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "This record doesnt exist");
+    }
+  }
+
   @GetMapping("/books")
   public ResponseEntity<List<Book>> getAllBooks() {
     return new ResponseEntity<>(bookService.listBooks(), HttpStatus.OK);
@@ -67,7 +85,7 @@ public class BugTrackerController {
 
   @GetMapping("/book/{id}")
   public ResponseEntity<Book> getBookById(@PathVariable("id") long id) {
-    try{
+    try {
       return new ResponseEntity<>(bookService.findBookById(id), HttpStatus.OK);
     } catch (BookNotFoundException e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found");
@@ -84,6 +102,24 @@ public class BugTrackerController {
     }
   }
 
+  @DeleteMapping(value = "/deleteBook/{id}")
+  public Book deleteBook(@PathVariable("id") long id) {
+    try {
+      return bookService.deleteBook(id);
+    } catch (BookNotFoundException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book with id = " + id + "doesnt exist");
+    }
+  }
+
+  @PostMapping(value = "/updateBook", consumes = "application/json", produces = "application/json")
+  public List<Book> updateBook(@RequestBody Book book) {
+    try {
+      return bookService.updateBook(book);
+    } catch (BookNotFoundException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "This book doesnt exist");
+    }
+  }
+
   @GetMapping("/clients")
   public ResponseEntity<List<Client>> getAllClients() {
     return new ResponseEntity<>(clientService.listClient(), HttpStatus.OK);
@@ -91,7 +127,7 @@ public class BugTrackerController {
 
   @GetMapping("/client/{id}")
   public ResponseEntity<Client> getClientById(@PathVariable("id") long id) {
-    try{
+    try {
       return new ResponseEntity<>(clientService.findClientById(id), HttpStatus.OK);
     } catch (ClientNotFoundException e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found");
@@ -106,6 +142,24 @@ public class BugTrackerController {
     throw new ResponseStatusException(HttpStatus.ALREADY_REPORTED, "This client already exist");
   }
 
+  @DeleteMapping(value = "/deleteClient/{id}")
+  public Client deleteClient(@PathVariable("id") long id) {
+    try {
+      return clientService.deleteClient(id);
+    } catch (ClientNotFoundException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "This client doesnt exist");
+    }
+  }
+
+  @PostMapping(value = "/updateClient", consumes = "application/json", produces = "application/json")
+  public List<Client> updateClient(@RequestBody Client client) {
+    try {
+      return clientService.updateClient(client);
+    } catch (ClientNotFoundException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "This client doesnt exist");
+    }
+  }
+
   @GetMapping("/bookTypes")
   public ResponseEntity<List<BookType>> getAllBookTypes() {
     return new ResponseEntity<>(bookTypeService.listBookType(), HttpStatus.OK);
@@ -113,7 +167,7 @@ public class BugTrackerController {
 
   @GetMapping("/bookType/{id}")
   public ResponseEntity<BookType> getBookTypeById(@PathVariable("id") long id) {
-    try{
+    try {
       return new ResponseEntity<>(bookTypeService.findBookTypeById(id), HttpStatus.OK);
     } catch (BookTypeNotFoundException e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "BookType not found");
@@ -125,6 +179,24 @@ public class BugTrackerController {
     return new ResponseEntity<>(bookTypeService.listBookTypesLowFine(fine), HttpStatus.OK);
   }
 
+  @DeleteMapping(value = "/deleteBookType/{id}")
+  public BookType deleteBookType(@PathVariable("id") long id) {
+    try {
+      return bookTypeService.deleteBookType(id);
+    } catch (BookTypeNotFoundException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "This BookType doesnt exist");
+    }
+  }
+
+  @PostMapping(value = "/updateBookType", consumes = "application/json", produces = "application/json")
+  public List<BookType> updateBookType(@RequestBody BookType bookType) {
+    try {
+      return bookTypeService.updateBookType(bookType);
+    } catch (BookTypeNotFoundException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "This BookType doesnt exist");
+    }
+  }
+
   @PostMapping(value = "/addBookType", consumes = "application/json", produces = "application/json")
   public BookType addBookType(@RequestBody BookType bookType) {
     if (!bookTypeService.isExist(bookType)) {
@@ -132,7 +204,6 @@ public class BugTrackerController {
     }
     throw new ResponseStatusException(HttpStatus.ALREADY_REPORTED, "This book type already exist");
   }
-
 
 
   @Autowired

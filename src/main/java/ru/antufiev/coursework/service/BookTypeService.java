@@ -10,4 +10,6 @@ public interface BookTypeService {
   List<BookType> listBookTypesLowFine(long fine);
   boolean isExist(BookType bookType);
   BookType addBookType(BookType bookType);
+  BookType deleteBookType(long id);
+  List<BookType> updateBookType(BookType bookType);
 }

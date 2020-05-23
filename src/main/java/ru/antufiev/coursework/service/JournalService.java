@@ -9,4 +9,6 @@ public interface JournalService {
   Record findRecordById(long id);
   Record addRecord(Record record);
   boolean isExist(Record record);
+  Record deleteRecord(long id);
+  List<Record> updateRecord(Record record);
 }

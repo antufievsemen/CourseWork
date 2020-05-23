@@ -9,4 +9,6 @@ public interface BookService {
   Book findBookById(long id);
   boolean isExist(Book book);
   Book addBook(Book book);
+  Book deleteBook(long id);
+  List<Book> updateBook(Book book);
 }

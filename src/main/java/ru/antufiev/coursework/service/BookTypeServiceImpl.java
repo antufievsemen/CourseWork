@@ -57,4 +57,29 @@ public class BookTypeServiceImpl implements BookTypeService {
   public BookType addBookType(BookType bookType) {
     return repository.save(bookType);
   }
+
+  @Override
+  public BookType deleteBookType(long id) {
+    Optional<BookType> optional = repository.findById(id);
+    if (optional.isPresent()) {
+      repository.deleteById(id);
+      return optional.get();
+    }
+    throw new BookTypeNotFoundException("BookType with id = " + id + " doesnt exist");
+  }
+
+  @Override
+  public List<BookType> updateBookType(BookType bookType) {
+    Optional<BookType> optional = repository.findById(bookType.getBookTypeId());
+    if (optional.isPresent()) {
+      BookType bookTypeUpdate = optional.get();
+      bookTypeUpdate.setName(bookType.getName());
+      bookTypeUpdate.setCount(bookType.getCount());
+      bookTypeUpdate.setDayCount(bookType.getDayCount());
+      bookTypeUpdate.setFine(bookType.getFine());
+      repository.save(bookTypeUpdate);
+      return listBookType();
+    }
+    return listBookType();
+  }
 }

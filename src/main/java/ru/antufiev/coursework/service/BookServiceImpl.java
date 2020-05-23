@@ -46,4 +46,28 @@ public class BookServiceImpl implements BookService{
     return repository.save(book);
   }
 
+  @Override
+  public Book deleteBook(long id) {
+    Optional<Book> optionalBook = repository.findById(id);
+    if (optionalBook.isPresent()) {
+      repository.deleteById(id);
+      return optionalBook.get();
+    }
+    throw new BookNotFoundException("This book doesnt exist");
+  }
+
+  @Override
+  public List<Book> updateBook(Book book) {
+    Optional<Book> optionalBook = repository.findById(book.getBookId());
+    if (optionalBook.isPresent()) {
+      Book bookUpdate = optionalBook.get();
+      bookUpdate.setName(book.getName());
+      bookUpdate.setCount(book.getCount());
+      bookUpdate.setBookType(book.getBookType());
+      repository.save(bookUpdate);
+      return listBooks();
+    }
+    throw new BookNotFoundException("This book doesnt exist");
+  }
+
 }
