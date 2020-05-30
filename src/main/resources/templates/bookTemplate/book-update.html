@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Book</title>
+</head>
+<body>
+<form action="#" th:action="@{/book-update}" th:object="${book}" method="post">
+    <label for="bookId">ID</label>
+    <input readonly type="number" th:field="*{bookId}" id="bookId" placeholder="bookId">
+    <br/>
+    <label for="name">name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="name">
+    <br/>
+    <label for="count">count</label>
+    <input type="number" th:field="*{count}" id="count" placeholder="count">
+    <br/>
+    <label for="bookType.bookTypeId">bookType.bookTypeId</label>
+    <input readonly type="number" th:field="*{bookType.bookTypeId}" id="bookType.bookTypeId" placeholder="bookType.bookTypeId">
+    <br/>
+    <label for="bookType.name">bookType.name</label>
+    <input type="text" th:field="*{bookType.name}" id="bookType.name" placeholder="bookType.name">
+    <br/>
+    <label for="bookType.count">bookType.count</label>
+    <input type="number" th:field="*{bookType.count}" id="bookType.count" placeholder="bookType.count">
+    <br/>
+    <label for="bookType.fine">bookType.fine</label>
+    <input type="number" th:field="*{bookType.fine}" id="bookType.fine" placeholder="bookType.fine">
+    <br/>
+    <label for="bookType.dayCount">bookType.dayCount</label>
+    <input type="number" th:field="*{bookType.dayCount}" id="bookType.dayCount" placeholder="bookType.dayCount">
+    <br/>
+    <input type="submit" value="Update Book">
+</form>
+</body>
+</html>

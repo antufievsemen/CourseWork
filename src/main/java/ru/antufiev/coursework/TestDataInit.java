@@ -2,25 +2,39 @@ package ru.antufiev.coursework;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import ru.antufiev.coursework.entity.User;
-import ru.antufiev.coursework.repository.UserRepository;
-
-import java.util.Collections;
+import ru.antufiev.coursework.entity.Book;
+import ru.antufiev.coursework.entity.BookType;
+import ru.antufiev.coursework.entity.Client;
+import ru.antufiev.coursework.entity.Record;
+import ru.antufiev.coursework.repository.BooksRepository;
+import ru.antufiev.coursework.repository.BooksTypesRepository;
+import ru.antufiev.coursework.repository.ClientsRepository;
+import ru.antufiev.coursework.repository.JournalRepository;
 
 @Component
 public class TestDataInit implements CommandLineRunner {
 
   @Autowired
-  UserRepository userRep;
+  JournalRepository repository;
 
   @Autowired
-  PasswordEncoder pwdEncoder;
+  BooksRepository booksRepository;
+
+  @Autowired
+  BooksTypesRepository booksTypesRepository;
+
+  @Autowired
+  ClientsRepository clientsRepository;
+
 
   @Override
   public void run(String... args) throws Exception {
-    userRep.save(new User("user", pwdEncoder.encode("pwd"), Collections.singletonList("ROLE_USER")));
-    userRep.save(new User("admin", pwdEncoder.encode("apwd"), Collections.singletonList("ROLE_ADMIN")));
+    BookType bookType = new BookType("Comedy", 12, 1, 21);
+    Book book = new Book("Avstrali", 12, bookType);
+    Client client = new Client("Vasya", "Vasilievich", "Vasiliev", 12313223, 123123);
+    repository.save(new Record(book, client, "2001-12-22", "2002-12-22", "2003-01-01"));
+
   }
+
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>BookTypes</title>
+</head>
+<body>
+<div th:switch="${clients}">
+    <h2 th:case="null">No client found!</h2>
+    <div th:case="*">
+        <h2>Clients</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>firstName</th>
+                <th>secondName</th>
+                <th>fatherName</th>
+                <th>passportSeria</th>
+                <th>passportNum</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="type : ${clients}">
+                <td th:text="${type.clientId}"></td>
+                <td th:text="${type.firstName}"></td>
+                <td th:text="${type.secondName}"></td>
+                <td th:text="${type.fatherName}"></td>
+                <td th:text="${type.passportSeria}"></td>
+                <td th:text="${type.passportNum}"></td>
+                <td><a th:href="@{client-update/{id}(id=${type.clientId})}">Edit</a></td>
+                <td><a th:href="@{client-delete/{id}(id=${type.clientId})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="client-add">Create Client</a></p>
+    <p><a href="mainMenu">Main menu</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>BookTypes</title>
+</head>
+<body>
+<div th:switch="${bookTypes}">
+    <h2 th:case="null">No bookType found!</h2>
+    <div th:case="*">
+        <h2>BookTypes</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>count</th>
+                <th>fine</th>
+                <th>dayCount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="type : ${bookTypes}">
+                <td th:text="${type.bookTypeId}"></td>
+                <td th:text="${type.name}"></td>
+                <td th:text="${type.count}"></td>
+                <td th:text="${type.fine}"></td>
+                <td th:text="${type.dayCount}"></td>
+                <td><a th:href="@{type-update/{id}(id=${type.bookTypeId})}">Edit</a></td>
+                <td><a th:href="@{type-delete/{id}(id=${type.bookTypeId})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="type-add">Create bookType</a></p>
+    <p><a href="mainMenu">Main menu</a></p>
+
+</div>
+</body>
+</html>

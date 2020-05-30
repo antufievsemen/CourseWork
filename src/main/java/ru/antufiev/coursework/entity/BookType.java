@@ -88,17 +88,4 @@ public class BookType {
             ", dayCount=" + dayCount +
             '}';
   }
-
-  public boolean isEquals(BookType bookType) {
-    if (this.name.equals(bookType.getName())) {
-      if (this.count == bookType.getCount()) {
-        if (this.fine == bookType.getFine()) {
-          if (this.dayCount == bookType.getDayCount()) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
 }

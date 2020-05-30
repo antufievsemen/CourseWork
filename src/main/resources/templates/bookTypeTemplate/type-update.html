@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update BookType</title>
+</head>
+<body>
+<form action="#" th:action="@{/type-update}" th:object="${bookType}" method="post">
+    <label for="bookTypeId">ID</label>
+    <input readonly type="number" th:field="*{bookTypeId}" id="bookTypeId" placeholder="bookTypeId">
+    <br/>
+    <label for="name">name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="name">
+    <br/>
+    <label for="count">count</label>
+    <input type="number" th:field="*{count}" id="count" placeholder="count">
+    <br/>
+    <label for="fine">fine</label>
+    <input type="number" th:field="*{fine}" id="fine" placeholder="fine">
+    <br/>
+    <label for="dayCount">dayCount</label>
+    <input type="number" th:field="*{dayCount}" id="dayCount" placeholder="dayCount">
+    <br/>
+    <input type="submit" value="Update BookType">
+</form>
+</body>
+</html>

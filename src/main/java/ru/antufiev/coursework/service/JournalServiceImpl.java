@@ -38,17 +38,6 @@ public class JournalServiceImpl implements JournalService{
   }
 
   @Override
-  public boolean isExist(Record record) {
-    List<Record> listRecord = (List<Record>) repository.findAll();
-    for (Record element : listRecord) {
-      if (record.isEquals(element)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @Override
   public Record deleteRecord(long id) {
     Optional<Record> record = repository.findById(id);
     if (record.isPresent()) {

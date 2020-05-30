@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Record</title>
+</head>
+<body>
+<form action="#" th:action="@{/journal-update}" th:object="${record}" method="post">
+    <label for="recordId">ID</label>
+    <input readonly type="number" th:field="*{recordId}" id="recordId" placeholder="recordId">
+    <br/>
+    <label for="book.bookId">book.ID</label>
+    <input readonly type="number" th:field="*{book.bookId}" id="book.bookId" placeholder="book.bookId">
+    <br/>
+    <label for="book.name">book.name</label>
+    <input type="text" th:field="*{book.name}" id="book.name" placeholder="book.name">
+    <br/>
+    <label for="book.count">book.count</label>
+    <input type="number" th:field="*{book.count}" id="book.count" placeholder="book.count">
+    <br/>
+    <label for="book.bookType.bookTypeId">book.bookType.bookTypeId</label>
+    <input readonly type="number" th:field="*{book.bookType.bookTypeId}" id="book.bookType.bookTypeId" placeholder="book.bookType.bookTypeId">
+    <br/>
+    <label for="book.bookType.name">book.bookType.name</label>
+    <input type="text" th:field="*{book.bookType.name}" id="book.bookType.name" placeholder="book.bookType.name">
+    <br/>
+    <label for="book.bookType.count">book.bookType.count</label>
+    <input type="number" th:field="*{book.bookType.count}" id="book.bookType.count" placeholder="book.bookType.count">
+    <br/>
+    <label for="book.bookType.fine">book.bookType.fine</label>
+    <input type="number" th:field="*{book.bookType.fine}" id="book.bookType.fine" placeholder="book.bookType.fine">
+    <br/>
+    <label for="book.bookType.dayCount">book.bookType.dayCount</label>
+    <input type="number" th:field="*{book.bookType.dayCount}" id="book.bookType.dayCount" placeholder="book.bookType.dayCount">
+    <br/>
+    <label for="client.clientId">client.clientId</label>
+    <input readonly type="number" th:field="*{client.clientId}" id="client.clientId" placeholder="client.clientId">
+    <br/>
+    <label for="client.firstName">client.firstName</label>
+    <input type="text" th:field="*{client.firstName}" id="client.firstName" placeholder="client.firstName">
+    <br/>
+    <label for="client.secondName">client.secondName</label>
+    <input type="text" th:field="*{client.secondName}" id="client.secondName" placeholder="client.secondName">
+    <br/>
+    <label for="client.fatherName">client.fatherName</label>
+    <input type="text" th:field="*{client.fatherName}" id="client.fatherName" placeholder="client.fatherName">
+    <br/>
+    <label for="client.passportSeria">client.passportSeria</label>
+    <input type="number" th:field="*{client.passportSeria}" id="client.passportSeria" placeholder="client.passportSeria">
+    <br/>
+    <label for="client.passportNum">client.passportNum</label>
+    <input type="number" th:field="*{client.passportNum}" id="client.passportNum" placeholder="client.passportNum">
+    <br/>
+    <label for="dateBegin">dateBegin</label>
+    <input type="text" th:field="*{dateBegin}" id="dateBegin" placeholder="dateBegin">
+    <br/>
+    <label for="dateEnd">dateEnd</label>
+    <input type="text" th:field="*{dateEnd}" id="dateEnd" placeholder="dateEnd">
+    <br/>
+    <label for="dateRet">dateRet</label>
+    <input type="text" th:field="*{dateRet}" id="dateRet" placeholder="dateRet">
+    <br/>
+    <input type="submit" value="Update Record">
+</form>
+</body>
+</html>

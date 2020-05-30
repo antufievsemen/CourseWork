@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Client</title>
+</head>
+<body>
+<form action="#" th:action="@{/client-update}" th:object="${client}" method="post">
+    <label for="clientId">ID</label>
+    <input readonly type="number" th:field="*{clientId}" id="clientId" placeholder="clientId">
+    <br/>
+    <label for="firstName">firstName</label>
+    <input type="text" th:field="*{firstName}" id="firstName" placeholder="firstName">
+    <br/>
+    <label for="secondName">secondName</label>
+    <input type="text" th:field="*{secondName}" id="secondName" placeholder="secondName">
+    <br/>
+    <label for="fatherName">fatherName</label>
+    <input type="text" th:field="*{fatherName}" id="fatherName" placeholder="fatherName">
+    <br/>
+    <label for="passportSeria">passportSeria</label>
+    <input type="number" th:field="*{passportSeria}" id="passportSeria" placeholder="passportSeria">
+    <br/>
+    <label for="passportNum">passportNum</label>
+    <input type="number" th:field="*{passportNum}" id="passportNum" placeholder="passportNum">
+    <br/>
+    <input type="submit" value="Update Client">
+</form>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Record</title>
+</head>
+<body>
+<form action="#" th:action="@{/journal-add}" th:object="${record}" method="post">
+
+    <label for="book.name">book.name</label>
+    <input type="text" th:field="*{book.name}" id="book.name" placeholder="book.name">
+
+    <label for="book.count">book.count</label>
+    <input type="number" th:field="*{book.count}" id="book.count" placeholder="book.count">
+
+    <label for="book.bookType.name">book.bookType.name</label>
+    <input type="text" th:field="*{book.bookType.name}" id="book.bookType.name" placeholder="book.bookType.name">
+
+    <label for="book.bookType.count">book.bookType.count</label>
+    <input type="number" th:field="*{book.bookType.count}" id="book.bookType.count" placeholder="book.bookType.count">
+
+    <label for="book.bookType.fine">book.bookType.fine</label>
+    <input type="number" th:field="*{book.bookType.fine}" id="book.bookType.fine" placeholder="book.bookType.fine">
+
+    <label for="book.bookType.dayCount">book.bookType.dayCount</label>
+    <input type="number" th:field="*{book.bookType.dayCount}" id="book.bookType.dayCount" placeholder="book.bookType.dayCount">
+
+    <label for="client.firstName">client.firstName</label>
+    <input type="text" th:field="*{client.firstName}" id="client.firstName" placeholder="client.firstName">
+
+    <label for="client.secondName">client.secondName</label>
+    <input type="text" th:field="*{client.secondName}" id="client.secondName" placeholder="client.secondName">
+
+    <label for="client.fatherName">client.fatherName</label>
+    <input type="text" th:field="*{client.fatherName}" id="client.fatherName" placeholder="client.fatherName">
+
+    <label for="client.passportSeria">client.passportSeria</label>
+    <input type="number" th:field="*{client.passportSeria}" id="client.passportSeria" placeholder="client.passportSeria">
+
+    <label for="client.passportNum">client.passportNum</label>
+    <input type="number" th:field="*{client.passportNum}" id="client.passportNum" placeholder="client.passportNum">
+
+    <label for="dateBegin">dateBegin</label>
+    <input type="text" th:field="*{dateBegin}" id="dateBegin" placeholder="dateBegin">
+
+    <label for="dateEnd">dateEnd</label>
+    <input type="text" th:field="*{dateEnd}" id="dateEnd" placeholder="dateEnd">
+
+    <label for="dateRet">dateRet</label>
+    <input type="text" th:field="*{dateRet}" id="dateRet" placeholder="dateRet">
+
+
+    <input type="submit" value="Create Record">
+</form>
+</body>
+</html>

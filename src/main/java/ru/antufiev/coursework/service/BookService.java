@@ -7,7 +7,6 @@ import java.util.List;
 public interface BookService {
   List<Book> listBooks();
   Book findBookById(long id);
-  boolean isExist(Book book);
   Book addBook(Book book);
   Book deleteBook(long id);
   List<Book> updateBook(Book book);

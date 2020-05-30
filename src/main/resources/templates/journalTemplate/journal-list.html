@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Journal</title>
+</head>
+<body>
+<div th:switch="${records}">
+    <h2 th:case="null">No record found!</h2>
+    <div th:case="*">
+        <h2>Journal</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>bookId</th>
+                <th>bookName</th>
+                <th>bookCount</th>
+                <th>bookTypeId</th>
+                <th>typeName</th>
+                <th>typeCount</th>
+                <th>typeFine</th>
+                <th>typeDayCount</th>
+                <th>clientId</th>
+                <th>clientFirstName</th>
+                <th>clientSecondName</th>
+                <th>clientFatherName</th>
+                <th>passportSeria</th>
+                <th>passportNum</th>
+                <th>dateBegin</th>
+                <th>dateEnd</th>
+                <th>dateRet</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="type : ${records}">
+                <td th:text="${type.recordId}"></td>
+                <td th:text="${type.book.bookId}"></td>
+                <td th:text="${type.book.name}"></td>
+                <td th:text="${type.book.count}"></td>
+                <td th:text="${type.book.bookType.bookTypeId}"></td>
+                <td th:text="${type.book.bookType.name}"></td>
+                <td th:text="${type.book.bookType.count}"></td>
+                <td th:text="${type.book.bookType.fine}"></td>
+                <td th:text="${type.book.bookType.dayCount}"></td>
+                <td th:text="${type.client.clientId}"></td>
+                <td th:text="${type.client.firstName}"></td>
+                <td th:text="${type.client.secondName}"></td>
+                <td th:text="${type.client.fatherName}"></td>
+                <td th:text="${type.client.passportSeria}"></td>
+                <td th:text="${type.client.passportNum}"></td>
+                <td th:text="${type.dateBegin}"></td>
+                <td th:text="${type.dateEnd}"></td>
+                <td th:text="${type.dateRet}"></td>
+                <td><a th:href="@{journal-update/{id}(id=${type.recordId})}">Edit</a></td>
+                <td><a th:href="@{journal-delete/{id}(id=${type.recordId})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="journal-add">Create Record</a></p>
+    <p><a href="mainMenu">Main menu</a></p>
+</div>
+</body>
+</html>

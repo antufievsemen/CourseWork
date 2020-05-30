@@ -101,21 +101,4 @@ public class Client {
             ", passportNum='" + passportNum + '\'' +
             '}';
   }
-
-  public boolean isEquals(Client client) {
-    if (this.firstName.equals(client.getFirstName())) {
-      if (this.secondName.equals(client.getSecondName())) {
-        if (this.fatherName.equals(client.getFatherName())) {
-          if (this.passportSeria == client.getPassportSeria()) {
-            if (this.passportNum == client.getPassportNum()) {
-              return true;
-            }
-          }
-        }
-      }
-
-    }
-    return false;
-  }
-
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Client</title>
+</head>
+<body>
+<form action="#" th:action="@{/client-add}" th:object="${client}" method="post">
+    <label for="firstName">firstName</label>
+    <input type="text" th:field="*{firstName}" id="firstName" placeholder="firstName">
+    <label for="secondName">secondName</label>
+    <input type="text" th:field="*{secondName}" id="secondName" placeholder="secondName">
+    <label for="fatherName">fatherName</label>
+    <input type="text" th:field="*{fatherName}" id="fatherName" placeholder="fatherName">
+    <label for="passportSeria">passportSeria</label>
+    <input type="text" th:field="*{passportSeria}" id="passportSeria" placeholder="passportSeria">
+    <label for="passportNum">passportNum</label>
+    <input type="text" th:field="*{passportNum}" id="passportNum" placeholder="passportNum">
+    <input type="submit" value="Create Client">
+</form>
+</body>
+</html>

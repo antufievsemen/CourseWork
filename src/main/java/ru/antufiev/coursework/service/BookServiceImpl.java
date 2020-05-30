@@ -31,17 +31,6 @@ public class BookServiceImpl implements BookService{
   }
 
   @Override
-  public boolean isExist(Book book) {
-    List<Book> listBook = (List<Book>) repository.findAll();
-    for (Book element : listBook) {
-      if (book.isEquals(element)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @Override
   public Book addBook(Book book) {
     return repository.save(book);
   }

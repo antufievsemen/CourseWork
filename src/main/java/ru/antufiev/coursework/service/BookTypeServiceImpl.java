@@ -31,29 +31,6 @@ public class BookTypeServiceImpl implements BookTypeService {
   }
 
   @Override
-  public List<BookType> listBookTypesLowFine(long fine) {
-    List<BookType> listBookType = (List<BookType>) repository.findAll();
-    List<BookType> listResult = new ArrayList<>();
-    for (BookType bookType : listBookType) {
-      if (bookType.getFine() <= fine) {
-        listResult.add(bookType);
-      }
-    }
-    return listResult;
-  }
-
-  @Override
-  public boolean isExist(BookType bookType) {
-    List<BookType> listBookType = (List<BookType>) repository.findAll();
-    for (BookType type : listBookType) {
-      if (bookType.isEquals(type)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @Override
   public BookType addBookType(BookType bookType) {
     return repository.save(bookType);
   }

@@ -30,17 +30,6 @@ public class ClientServiceImpl implements ClientService {
   }
 
   @Override
-  public boolean isExist(Client client) {
-    List<Client> listClient = (List<Client>) repository.findAll();
-    for (Client element : listClient) {
-      if (client.isEquals(element)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @Override
   public Client addClient(Client client) {
     return repository.save(client);
   }

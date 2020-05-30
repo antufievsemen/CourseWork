@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<div th:switch="${books}">
+    <h2 th:case="null">No book found!</h2>
+    <div th:case="*">
+        <h2>Books</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>count</th>
+                <th>typeId</th>
+                <th>typeName</th>
+                <th>typeCount</th>
+                <th>typeFine</th>
+                <th>typeDayCount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="type : ${books}">
+                <td th:text="${type.bookId}"></td>
+                <td th:text="${type.name}"></td>
+                <td th:text="${type.count}"></td>
+                <td th:text="${type.bookType.bookTypeId}"></td>
+                <td th:text="${type.bookType.name}"></td>
+                <td th:text="${type.bookType.count}"></td>
+                <td th:text="${type.bookType.fine}"></td>
+                <td th:text="${type.bookType.dayCount}"></td>
+                <td><a th:href="@{book-update/{id}(id=${type.bookId})}">Edit</a></td>
+                <td><a th:href="@{book-delete/{id}(id=${type.bookId})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="book-add">Create Book</a></p>
+    <p><a href="mainMenu">Main menu</a></p>
+
+</div>
+</body>
+</html>

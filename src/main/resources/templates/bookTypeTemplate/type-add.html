@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create BookType</title>
+</head>
+<body>
+<form action="#" th:action="@{/type-add}" th:object="${bookType}" method="post">
+    <label for="name">name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="name">
+    <label for="count">count</label>
+    <input type="number" th:field="*{count}" id="count" placeholder="count">
+    <label for="fine">fine</label>
+    <input type="number" th:field="*{fine}" id="fine" placeholder="fine">
+    <label for="dayCount">dayCount</label>
+    <input type="number" th:field="*{dayCount}" id="dayCount" placeholder="dayCount">
+    <input type="submit" value="Create BookType">
+</form>
+</body>
+</html>

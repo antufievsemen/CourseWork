@@ -69,15 +69,4 @@ public class Book {
             ", bookTypes=" + bookType +
             '}';
   }
-
-  public boolean isEquals(Book book) {
-    if (this.name.equals(book.getName())) {
-      if (this.count == book.getCount()) {
-        if (this.bookType.isEquals(book.getBookType())) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
 }
